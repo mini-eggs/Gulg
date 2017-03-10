@@ -5,13 +5,14 @@ const HtmlMinifierOptions = { minifyJS: true, collapseWhitespace: true };
 import replaceall from "replaceall";
 
 class Tasks {
-  constructor(props) {
+
+  constructor (props) {
     this.state = {
       base: props.base
     };
   }
 
-  getDataFromFile(file) {
+  getDataFromFile (file) {
     let gulpfile = fs.readFileSync(path.join(file));
     gulpfile = gulpfile.toString("utf8");
     gulpfile = `<script>${gulpfile}</script>`;
@@ -37,7 +38,7 @@ class Tasks {
     };
   }
 
-  getTasks(string) {
+  getTasks (string) {
     const stringdata = string.split(".task(");
     // first one is no good
     // throw it out with filter
@@ -49,7 +50,7 @@ class Tasks {
       .filter(n => n);
   }
 
-  getTasksRecursive(file = this.state.base, tasks = []) {
+  getTasksRecursive (file = this.state.base, tasks = []) {
     const data = this.getDataFromFile(file);
     const aTasks = this.getTasks(data.file);
 
@@ -68,10 +69,18 @@ class Tasks {
 
     return [...new Set(tasks)];
   }
+
+  getAllTasks () {
+    return new Promise((resolve, reject) => {
+      try {
+        resolve(this.getTasksRecursive())
+      }
+      catch (err) {
+        reject('No gulpfile.js could be found')
+      }
+    })
+  }
+
 }
 
-export default () => {
-  const base = path.join(process.cwd(), "gulpfile.js");
-  const tasks = new Tasks({ base: base });
-  return tasks.getTasksRecursive();
-};
+export default Tasks

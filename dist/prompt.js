@@ -33,6 +33,7 @@ function getTaskFromList(name, list) {
 }
 
 exports.default = function (options) {
+
   var promptOptions = {
     name: "Gulp task",
     message: "Choose a task",
@@ -42,6 +43,7 @@ exports.default = function (options) {
     type: "list",
     pageSize: options.length
   };
+
   return new _promise2.default(function () {
     var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(resolve, reject) {
       var chosen;
@@ -64,7 +66,7 @@ exports.default = function (options) {
               _context.prev = 7;
               _context.t0 = _context["catch"](0);
 
-              reject(_context.t0);
+              reject('There was an issue running the command. Ensure Gulp is installed globally.');
 
             case 10:
             case "end":

@@ -1,6 +1,6 @@
 {
   "name": "gulg",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Choose a Gulp task",
   "main": "dist/entry.js",
   "author": "Evan M Jones <evanjones4040@gmail.com>",
@@ -8,6 +8,7 @@
   "dependencies": {
     "babel-plugin-transform-regenerator": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "caporal": "^0.3.0",
     "html-minifier": "^3.4.0",
     "inquirer": "^3.0.6",
     "node-cmd": "^2.0.0",

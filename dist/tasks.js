@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _promise = require("babel-runtime/core-js/promise");
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _set = require("babel-runtime/core-js/set");
 
 var _set2 = _interopRequireDefault(_set);
@@ -157,12 +161,21 @@ var Tasks = function () {
 
       return [].concat((0, _toConsumableArray3.default)(new _set2.default(tasks)));
     }
+  }, {
+    key: "getAllTasks",
+    value: function getAllTasks() {
+      var _this = this;
+
+      return new _promise2.default(function (resolve, reject) {
+        try {
+          resolve(_this.getTasksRecursive());
+        } catch (err) {
+          reject('No gulpfile.js could be found');
+        }
+      });
+    }
   }]);
   return Tasks;
 }();
 
-exports.default = function () {
-  var base = _path2.default.join(process.cwd(), "gulpfile.js");
-  var tasks = new Tasks({ base: base });
-  return tasks.getTasksRecursive();
-};
+exports.default = Tasks;
