@@ -1,6 +1,6 @@
 {
   "name": "gulg",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Choose a Gulp task",
   "main": "dist/entry.js",
   "author": "Evan M Jones <evanjones4040@gmail.com>",
@@ -14,7 +14,7 @@
     "replaceall": "^0.1.6"
   },
   "scripts": {
-    "start": "babel src --out-dir dist --presets=es2017,es2015 --plugins=transform-runtime,transform-regenerator",
+    "build": "babel src --out-dir dist --presets=es2017,es2015 --plugins=transform-runtime,transform-regenerator",
     "dev": "babel src --out-dir dist --presets=es2017,es2015 --plugins=transform-runtime,transform-regenerator --watch"
   },
   "devDependencies": {

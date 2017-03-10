@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -28,10 +28,10 @@ var main = function () {
 
           case 5:
             _context.prev = 5;
-            _context.t0 = _context['catch'](1);
+            _context.t0 = _context["catch"](1);
 
-            errorHandler('No gulpfile.js was found. If there is a gulpfile.js in the current directory feel free to open an issue in our repo.');
-            return _context.abrupt('return');
+            errorHandler("No gulpfile.js was found. If there is a gulpfile.js in the current directory feel free to open an issue in our repo.");
+            return _context.abrupt("return");
 
           case 9:
             task = (0, _prompt2.default)(aTasks);
@@ -48,13 +48,13 @@ var main = function () {
 
           case 18:
             _context.prev = 18;
-            _context.t3 = _context['catch'](10);
+            _context.t3 = _context["catch"](10);
 
-            errorHandler('There was an issue running the Gulp task. Ensure Gulp is installed globally. Feel free to open an issue in our repo.');
-            return _context.abrupt('return');
+            errorHandler("There was an issue running the Gulp task. Ensure Gulp is installed globally. Feel free to open an issue in our repo.");
+            return _context.abrupt("return");
 
           case 22:
-          case 'end':
+          case "end":
             return _context.stop();
         }
       }
@@ -66,29 +66,29 @@ var main = function () {
   };
 }();
 
-var _tasks = require('./tasks');
+var _tasks = require("./tasks");
 
 var _tasks2 = _interopRequireDefault(_tasks);
 
-var _prompt = require('./prompt');
+var _prompt = require("./prompt");
 
 var _prompt2 = _interopRequireDefault(_prompt);
 
-var _nodeCmd = require('node-cmd');
+var _nodeCmd = require("node-cmd");
 
 var _nodeCmd2 = _interopRequireDefault(_nodeCmd);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function runTask(task) {
-  var dir = task.file.split('/');
+  var dir = task.file.split("/");
   dir.pop();
-  dir = dir.join('/');
+  dir = dir.join("/");
   console.log();
-  console.log('Firing task ' + task.name + '  \uD83D\uDE43');
+  console.log("Firing task " + task.name + "  \uD83D\uDE43");
   console.log();
-  _nodeCmd2.default.get('cd ' + dir + ' && gulp ' + task.name, function (consoleOutput) {
-    console.log('Gulp output below: ');
+  _nodeCmd2.default.get("cd " + dir + " && gulp " + task.name, function (consoleOutput) {
+    console.log("Gulp output below: ");
     console.log();
     console.log(consoleOutput);
     console.log();
@@ -97,7 +97,7 @@ function runTask(task) {
 
 function errorHandler(err) {
   console.log();
-  console.log('Something went wrong. Error below:');
+  console.log("Something went wrong. Error below:");
   console.log(err);
   console.log();
 }

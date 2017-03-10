@@ -1,26 +1,26 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _promise = require('babel-runtime/core-js/promise');
+var _promise = require("babel-runtime/core-js/promise");
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _inquirer = require('inquirer');
+var _inquirer = require("inquirer");
 
 var _inquirer2 = _interopRequireDefault(_inquirer);
 
-var _nodeCmd = require('node-cmd');
+var _nodeCmd = require("node-cmd");
 
 var _nodeCmd2 = _interopRequireDefault(_nodeCmd);
 
@@ -35,11 +35,11 @@ function getTaskFromList(name, list) {
 exports.default = function (options) {
   var promptOptions = {
     name: "Gulp task",
-    message: 'Choose a task',
+    message: "Choose a task",
     choices: options.map(function (o) {
       return o.name;
     }),
-    type: 'list',
+    type: "list",
     pageSize: options.length
   };
   return new _promise2.default(function () {
@@ -56,18 +56,18 @@ exports.default = function (options) {
             case 3:
               chosen = _context.sent;
 
-              resolve(getTaskFromList(chosen['Gulp task'], options));
+              resolve(getTaskFromList(chosen["Gulp task"], options));
               _context.next = 10;
               break;
 
             case 7:
               _context.prev = 7;
-              _context.t0 = _context['catch'](0);
+              _context.t0 = _context["catch"](0);
 
               reject(_context.t0);
 
             case 10:
-            case 'end':
+            case "end":
               return _context.stop();
           }
         }

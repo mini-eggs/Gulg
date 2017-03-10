@@ -1,42 +1,42 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _set = require('babel-runtime/core-js/set');
+var _set = require("babel-runtime/core-js/set");
 
 var _set2 = _interopRequireDefault(_set);
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+var _getIterator2 = require("babel-runtime/core-js/get-iterator");
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _createClass2 = require("babel-runtime/helpers/createClass");
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _fs = require('fs');
+var _fs = require("fs");
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _path = require('path');
+var _path = require("path");
 
 var _path2 = _interopRequireDefault(_path);
 
-var _htmlMinifier = require('html-minifier');
+var _htmlMinifier = require("html-minifier");
 
 var _htmlMinifier2 = _interopRequireDefault(_htmlMinifier);
 
-var _replaceall = require('replaceall');
+var _replaceall = require("replaceall");
 
 var _replaceall2 = _interopRequireDefault(_replaceall);
 
@@ -54,14 +54,14 @@ var Tasks = function () {
   }
 
   (0, _createClass3.default)(Tasks, [{
-    key: 'getDataFromFile',
+    key: "getDataFromFile",
     value: function getDataFromFile(file) {
       var gulpfile = _fs2.default.readFileSync(_path2.default.join(file));
-      gulpfile = gulpfile.toString('utf8');
-      gulpfile = '<script>' + gulpfile + '</script>';
+      gulpfile = gulpfile.toString("utf8");
+      gulpfile = "<script>" + gulpfile + "</script>";
       gulpfile = _htmlMinifier2.default.minify(gulpfile, HtmlMinifierOptions);
       gulpfile = (0, _replaceall2.default)('"', "'", gulpfile);
-      gulpfile = (0, _replaceall2.default)(' ', '', gulpfile);
+      gulpfile = (0, _replaceall2.default)(" ", "", gulpfile);
       var gulpdata = gulpfile.split("require('");
       var gulprequires = [];
 
@@ -73,9 +73,9 @@ var Tasks = function () {
         for (var _iterator = (0, _getIterator3.default)(gulpdata), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var single = _step.value;
 
-          if (single.includes("\')")) {
+          if (single.includes("')")) {
             var anotherFile = single.split("')")[0];
-            if (anotherFile.includes('./')) {
+            if (anotherFile.includes("./")) {
               // local file, lets read it
               gulprequires.push(anotherFile);
             }
@@ -102,9 +102,9 @@ var Tasks = function () {
       };
     }
   }, {
-    key: 'getTasks',
+    key: "getTasks",
     value: function getTasks(string) {
-      var stringdata = string.split('.task(');
+      var stringdata = string.split(".task(");
       // first one is no good
       // throw it out with filter
       return stringdata.map(function (single, index) {
@@ -115,7 +115,7 @@ var Tasks = function () {
       });
     }
   }, {
-    key: 'getTasksRecursive',
+    key: "getTasksRecursive",
     value: function getTasksRecursive() {
       var file = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.base;
       var tasks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
@@ -162,9 +162,7 @@ var Tasks = function () {
 }();
 
 exports.default = function () {
-  var base = _path2.default.join(process.cwd(), 'gulpfile.js');
+  var base = _path2.default.join(process.cwd(), "gulpfile.js");
   var tasks = new Tasks({ base: base });
   return tasks.getTasksRecursive();
 };
-
-// export default getTasksRecursive(path.join(process.cwd(), 'gulpfile.js'));
