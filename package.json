@@ -1,6 +1,6 @@
 {
   "name": "gulg",
-  "version": "0.9.99",
+  "version": "1.0.0",
   "description": "Choose a Gulp task",
   "main": "dist/entry.js",
   "author": "Evan M Jones <evanjones4040@gmail.com>",
