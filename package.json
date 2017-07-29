@@ -1,6 +1,6 @@
 {
   "name": "gulg",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Choose a Gulp task",
   "main": "dist/entry.js",
   "author": "Evan M Jones <evanjones4040@gmail.com>",
@@ -25,5 +25,15 @@
   },
   "bin": {
     "gulg": "bin/run.js"
+  },
+  "author": "Evan Jones <evanjones4040@gmail.com> (https://github.com/mini-eggs)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mini-eggs/Gulg/issues"
+  },
+  "homepage": "https://github.com/mini-eggs/Gulg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mini-eggs/Gulg.git"
   }
 }
